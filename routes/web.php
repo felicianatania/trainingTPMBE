@@ -19,11 +19,17 @@ Route::get('/', function () {
     return view('welcome');
 }); //bawa kita ke suatu view yg ada di folder views sesuai nama .php nya
 
-Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage'); 
+Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage');
 
 Route::post('/create-book', [BookController::class, 'createBook'])->name('createBook');
 
 Route::get('/get-books', [BookController::class, 'getBooks'])->name('getBooks');
+
+Route::get('/update-book/{id}', [BookController::class, 'getBookById'])->name('getBookById');
+
+Route::patch('/update-book/{id}', [BookController::class, 'updateBook'])->name('updateBook');
+
+Route::delete('/delete-book/{id}', [BookController::class, 'deleteBook'])->name('delete');
 
 Route::get('/hello', function () {
     echo('Hello World');
