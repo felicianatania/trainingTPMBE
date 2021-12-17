@@ -20,6 +20,8 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->date('release')->nullable();
             $table->integer('price');
+            $table->unsignedBigInteger('genreId');
+            $table->foreign('genreId')->references('id')->on('genres'); //foreign nama foreign key di id di table genres (ada di migration)
             $table->timestamps();
         });
     }

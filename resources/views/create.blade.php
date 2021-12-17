@@ -20,7 +20,9 @@
             <label for="price" class="form-label">Price</label>
             <input name="price" type="numeric" class="form-control" id="formGroupExampleInput" placeholder="Input price here">
         </div>
-
+        @error('price')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         <button type="submit" class="btn btn-success">Insert</button>
     </form>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Models\Book; //janlup import autocomplete aja
 use Illuminate\Http\Request;
 
@@ -11,7 +12,12 @@ class BookController extends Controller
         return view('create');
     }
 
-    public function createBook(Request $request){
+    public function createBook(BookRequest $request){
+        // $request->validate([
+        //     'title' => 'required',
+        //     'price' => 'required|numeric',
+        // ]); //kurang baik sebenernya, harus copy lagi ke function lagi misalnya di update
+
         Book::create([
             'title' => $request->title,
             'author' => $request->author,
@@ -35,7 +41,7 @@ class BookController extends Controller
         return view('update', ['book' => $book]);
     }
 
-    public function updateBook(Request $request, $id){
+    public function updateBook(BookRequest $request, $id){
         $book = Book::find($id);
 
         // $book->title = $request->title;
