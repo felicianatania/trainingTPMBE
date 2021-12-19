@@ -16,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); //welcome sesuai view bladenya
 }); //bawa kita ke suatu view yg ada di folder views sesuai nama .php nya
 
-Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage');
+// Route::get('/create', function(){
+//     return view('create'); //view nya sesuai blade ye //ini bisa di pindahin ke controller
+// });
+
+Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage'); //getCreatePage in nama function di controllernya
 
 Route::post('/create-book', [BookController::class, 'createBook'])->name('createBook');
 

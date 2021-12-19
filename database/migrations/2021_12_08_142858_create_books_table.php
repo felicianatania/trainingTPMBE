@@ -15,7 +15,7 @@ class CreateBooksTable extends Migration
     public function up()
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->id();
+            $table->id(); //ini gada di model karena dia udh automatis jadi primary key
             $table->string('title')->unique();
             $table->string('author');
             $table->date('release')->nullable();

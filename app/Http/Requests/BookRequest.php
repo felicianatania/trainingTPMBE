@@ -34,7 +34,7 @@ class BookRequest extends FormRequest
     public function messages(){
         return [
             'price.numeric' => 'price harus numeric',
-            'title.required' => 'price harus numeric',
+            //'title.required' => 'title harus diisi',
         ];
     }
 }

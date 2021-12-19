@@ -19,7 +19,7 @@ class BookController extends Controller
         // ]); //kurang baik sebenernya, harus copy lagi ke function lagi misalnya di update
 
         Book::create([
-            'title' => $request->title,
+            'title' => $request->title, //ini dia ambil $request->sesuai name di input html VIEW, 'title' brt dia bakal masukin ke atribut title sesuai di model
             'author' => $request->author,
             'release' => $request->release,
             'price' => $request->price,
@@ -29,14 +29,13 @@ class BookController extends Controller
     }
 
     public function getBooks(){
-        $books = Book::all();
-        //$book = DB::table('books')->get();
-        return view('view', ['books' => $books]);
+        $books = Book::all(); //buat satu variable $books ini untuk tampilin semua all Book:: -> nama model
+        //$book = DB::table('books')->get(); //yg 'books' itu nama table
+        return view('view', ['books' => $books]); //yg merah 'songs' itu nama variabelnya
     }
 
     public function getBookById($id){
         $book = Book::find($id);
-        //$book = DB::table('books')->get();
         //dd($book);
         return view('update', ['book' => $book]);
     }
