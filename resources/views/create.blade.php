@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 @section('content')
     <h1>Create Form</h1>
+    <form action="{{route('logout')}}" method="POST">
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
 
     <form action="{{ route('createBook') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -19,6 +22,10 @@
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
             <input name="price" type="numeric" class="form-control" id="formGroupExampleInput" placeholder="Input price here">
+        </div>
+        <div class="mb-3">
+            <label for="genreId" class="form-label">GenreId</label>
+            <input name="genreId" type="numeric" class="form-control" id="formGroupExampleInput" placeholder="Input genreId here">
         </div>
         @error('price')
             <div class="alert alert-danger">{{ $message }}</div>

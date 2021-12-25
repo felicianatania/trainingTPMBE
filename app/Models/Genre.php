@@ -14,6 +14,6 @@ class Genre extends Model
     ];
 
     public function book(){
-        return $this -> hasMany(Book::class);
+        return $this -> hasMany(Book::class, 'genreId'); //ini karena ga pake snake case id_, yg 'genreId'->mengacu ke foreignKey
     }
 }

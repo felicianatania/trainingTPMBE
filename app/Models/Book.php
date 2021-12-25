@@ -10,10 +10,10 @@ class Book extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'author', 'release', 'price', 'genreID',
+        'title', 'author', 'release', 'price', 'genreId',
     ];
 
     public function genre(){
-        return $this -> hasOne(Genre::class);
+        return $this -> belongsTo(Genre::class); //hasOne, belongsTo
     }
 }

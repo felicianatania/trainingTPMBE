@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BookRequest;
 use App\Models\Book; //janlup import autocomplete aja
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
     public function getCreatePage(){
+        // $genres = Genre::all();
+        // return view('create', ['genres' => $genres]);
         return view('create');
     }
 
@@ -23,6 +26,7 @@ class BookController extends Controller
             'author' => $request->author,
             'release' => $request->release,
             'price' => $request->price,
+            'genreId' => $request->genreId
         ]);
         //kiri itu dr model yg kanan dari html
         return redirect(route('getBooks')); //redirect itu url keganti juga

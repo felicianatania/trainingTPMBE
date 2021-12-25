@@ -21,7 +21,9 @@ class CreateBooksTable extends Migration
             $table->date('release')->nullable();
             $table->integer('price');
             $table->unsignedBigInteger('genreId');
-            $table->foreign('genreId')->references('id')->on('genres'); //foreign nama foreign key di id di table genres (ada di migration)
+            $table->foreign('genreId')->references('id')->on('genres') //foreign nama foreign key di id di table genres (ada di migration)
+                ->onUpdate('cascade')
+                ->onDelete('cascade'); //cascade kalo di update keganti juga, set null, set default, no action
             $table->timestamps();
         });
     }

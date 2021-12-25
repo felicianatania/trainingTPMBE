@@ -19,6 +19,7 @@ class BookSeeder extends Seeder
             'author'=>'Potter',
             'release'=>'2001-01-10',
             'price'=>100000,
+            'genreId'=>1
         ]);
     }
 }
