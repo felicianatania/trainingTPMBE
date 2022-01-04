@@ -54,8 +54,6 @@ class BookController extends Controller
 
         // $book->save();
 
-
-
         $book -> update([
             'title' => $request->title,
             'author' => $request->author,

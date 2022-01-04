@@ -1,9 +1,20 @@
 @extends('layouts.layout')
 @section('content')
     <h1>Create Form</h1>
-    <form action="{{route('logout')}}" method="POST">
-        <button type="submit" class="btn btn-danger">Logout</button>
-    </form>
+
+    @guest
+        <a href="{{route('login')}}">Login</a>
+    @else
+        @if (Auth::user()->role == 'admin')
+            hello aku admin
+        @else
+            hello member
+        @endif
+        <form action="{{route('logout')}}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    @endguest
 
     <form action="{{ route('createBook') }}" method="POST" enctype="multipart/form-data">
         @csrf

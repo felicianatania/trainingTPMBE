@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BookController;
+use App\Http\Middleware\IsAdminMiddleware;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +26,7 @@ Route::get('/', function () {
 //     return view('create'); //view nya sesuai blade ye //ini bisa di pindahin ke controller
 // });
 
-Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage'); //getCreatePage in nama function di controllernya
+//Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage'); //getCreatePage in nama function di controllernya
 
 Route::post('/create-book', [BookController::class, 'createBook'])->name('createBook');
 
@@ -47,3 +48,7 @@ Auth::routes();
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => IsAdminMiddleware::class], function(){
+    Route::get('/create', [BookController::class,'getCreatePage'])->name('getCreatePage');
+});
